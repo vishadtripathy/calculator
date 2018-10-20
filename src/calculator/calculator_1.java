@@ -162,7 +162,7 @@ public class calculator_1 {
 				default: ans=0;
 				}
 				dis.setText(""+ans);
-				a=ans;
+				flag=0;
 				
 			}
 		});
