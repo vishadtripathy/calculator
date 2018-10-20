@@ -18,7 +18,7 @@ public class calculator_1 {
 	private JTextField dis;
 	static double a=0,b=0;
 	static double ans=0;
-	static int op=0;
+	static int op=0,flag=0;
 
 	/**
 	 * Launch the application.
@@ -162,6 +162,8 @@ public class calculator_1 {
 				default: ans=0;
 				}
 				dis.setText(""+ans);
+				a=ans;
+				
 			}
 		});
 		eq.setBounds(208, 182, 89, 23);
@@ -179,9 +181,30 @@ public class calculator_1 {
 		JButton add = new JButton("+");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(flag==0){
 				a=Double.parseDouble(dis.getText());
 				op=1;
 				dis.setText("");
+				flag=1;
+				}
+				else{
+					b=Double.parseDouble(dis.getText());
+					switch(op){
+					case 1: ans=a+b;
+					break;
+					case 2: ans=a-b;
+					break;
+					case 3: ans=a*b;
+					break;
+					case 4: ans=a/b;
+					break;
+					default: ans=0;
+					}
+					a=ans;
+					dis.setText("");
+					flag=2;
+					op=1;
+				}
 			}
 		});
 		add.setBounds(372, 80, 52, 91);
@@ -190,9 +213,30 @@ public class calculator_1 {
 		JButton div = new JButton("/");
 		div.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				a=Double.parseDouble(dis.getText());
-				op=4;
-				dis.setText("");
+				if(flag==0){
+					a=Double.parseDouble(dis.getText());
+					op=4;
+					dis.setText("");
+					flag=1;
+					}
+					else{
+						b=Double.parseDouble(dis.getText());
+						switch(op){
+						case 1: ans=a+b;
+						break;
+						case 2: ans=a-b;
+						break;
+						case 3: ans=a*b;
+						break;
+						case 4: ans=a/b;
+						break;
+						default: ans=0;
+						}
+						a=ans;
+						dis.setText("");
+						flag=2;
+						op=4;
+					}
 			}
 		});
 		div.setBounds(372, 182, 52, 23);
@@ -201,9 +245,30 @@ public class calculator_1 {
 		JButton mul = new JButton("*");
 		mul.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				a=Double.parseDouble(dis.getText());
-				op=3;
-				dis.setText("");
+				if(flag==0){
+					a=Double.parseDouble(dis.getText());
+					op=3;
+					dis.setText("");
+					flag=1;
+					}
+					else{
+						b=Double.parseDouble(dis.getText());
+						switch(op){
+						case 1: ans=a+b;
+						break;
+						case 2: ans=a-b;
+						break;
+						case 3: ans=a*b;
+						break;
+						case 4: ans=a/b;
+						break;
+						default: ans=0;
+						}
+						a=ans;
+						dis.setText("");
+						flag=2;
+						op=3;
+					}
 			}
 		});
 		mul.setBounds(307, 114, 55, 57);
@@ -212,9 +277,30 @@ public class calculator_1 {
 		JButton sub = new JButton("__");
 		sub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				a=Double.parseDouble(dis.getText());
-				op=2;
-				dis.setText("");
+				if(flag==0){
+					a=Double.parseDouble(dis.getText());
+					op=2;
+					dis.setText("");
+					flag=1;
+					}
+					else{
+						b=Double.parseDouble(dis.getText());
+						switch(op){
+						case 1: ans=a+b;
+						break;
+						case 2: ans=a-b;
+						break;
+						case 3: ans=a*b;
+						break;
+						case 4: ans=a/b;
+						break;
+						default: ans=0;
+						}
+						a=ans;
+						dis.setText("");
+						flag=2;
+						op=2;
+					}
 			}
 		});
 		sub.setBounds(310, 182, 52, 23);
@@ -229,6 +315,9 @@ public class calculator_1 {
 		clr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dis.setText("");
+				ans=0;
+				a=0;
+				flag=0;
 			}
 		});
 		clr.setBounds(307, 80, 55, 23);
